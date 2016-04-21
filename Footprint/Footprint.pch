@@ -1,0 +1,43 @@
+//
+//  Footprint.pch
+//  Footprint
+//
+//  Created by 李小亚 on 16/3/30.
+//  Copyright © 2016年 李小亚. All rights reserved.
+//
+
+#ifndef Footprint_pch
+#define Footprint_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#define XYScreenWidth [UIScreen mainScreen].bounds.size.width
+#define XYScreenHeight [UIScreen mainScreen].bounds.size.height
+#define XYImageWidthHeight (XYScreenWidth - 10 - 3 * 10) / 4
+
+#import "UIView+AdjustFrame.h"
+#import "UIButton+XY.h"
+#import "UIImage+Category.h"
+#import "NSString+XY.h"
+#import "NSDate+extend.h"
+#import "NSString+XY.h"
+#import "XYFileTool.h"
+
+#define  XYKeyWindow [UIApplication sharedApplication].keyWindow
+
+#define XYMainColumnFont [UIFont systemFontOfSize:15]
+#define XYTextViewFont [UIFont systemFontOfSize:13]
+#define XYDetailEventFontSize 13
+
+#define XYCellTextFont [UIFont systemFontOfSize:15]
+#define XYCellRemindFont [UIFont systemFontOfSize:11]
+
+//自定义日志
+#ifdef DEBUG
+//#define XYLog(...) NSLog(__VA_ARGS__)
+#define XYLog(...) NSLog(@"%s\n %@\n\n", __func__, [NSString stringWithFormat:__VA_ARGS__])
+#else
+#endif
+
+#endif /* Footprint_pch */
