@@ -22,6 +22,10 @@
 		4816F1681CABDF7F00E0592C /* UIBarButtonItem+XY.m in Sources */ = {isa = PBXBuildFile; fileRef = 4816F1671CABDF7F00E0592C /* UIBarButtonItem+XY.m */; };
 		4816F16F1CABED9D00E0592C /* XYEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4816F16E1CABED9D00E0592C /* XYEventCell.m */; };
 		4816F1721CABEDDF00E0592C /* XYEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4816F1711CABEDDF00E0592C /* XYEvent.m */; };
+		481A6CE61CCAA0A20093DBFF /* XYLocalPhotoBrowserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 481A6CDF1CCAA0A20093DBFF /* XYLocalPhotoBrowserController.m */; };
+		481A6CE71CCAA0A20093DBFF /* XYPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 481A6CE11CCAA0A20093DBFF /* XYPhoto.m */; };
+		481A6CE81CCAA0A20093DBFF /* XYPhotosToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 481A6CE31CCAA0A20093DBFF /* XYPhotosToolBar.m */; };
+		481A6CE91CCAA0A20093DBFF /* LXYPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 481A6CE51CCAA0A20093DBFF /* LXYPhotoView.m */; };
 		481C8D1A1CBE431F00BA43E8 /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481C8D191CBE431F00BA43E8 /* AMapSearchKit.framework */; };
 		481C8D1C1CBE43F200BA43E8 /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481C8D1B1CBE43F200BA43E8 /* MAMapKit.framework */; };
 		481C8D201CBE446800BA43E8 /* AMapLocationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481C8D1F1CBE446800BA43E8 /* AMapLocationKit.framework */; };
@@ -66,10 +70,6 @@
 		487350B51CBF92290044CB41 /* XYCellPhotosView.m in Sources */ = {isa = PBXBuildFile; fileRef = 487350B41CBF92290044CB41 /* XYCellPhotosView.m */; };
 		487350C11CBFD0C10044CB41 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 487350C01CBFD0C10044CB41 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		487350C51CBFF22A0044CB41 /* XYFileTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 487350C41CBFF22A0044CB41 /* XYFileTool.m */; };
-		4876FC8C1CBB4F4D002DC521 /* XYPhotosBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4876FC831CBB4F4D002DC521 /* XYPhotosBrowser.m */; };
-		4876FC8D1CBB4F4D002DC521 /* XYPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 4876FC861CBB4F4D002DC521 /* XYPhoto.m */; };
-		4876FC8E1CBB4F4D002DC521 /* XYBrowserPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4876FC891CBB4F4D002DC521 /* XYBrowserPhotoView.m */; };
-		4876FC8F1CBB4F4D002DC521 /* XYPhotosToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4876FC8B1CBB4F4D002DC521 /* XYPhotosToolBar.m */; };
 		4876FC931CBB51BF002DC521 /* XYTagsTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4876FC921CBB51BF002DC521 /* XYTagsTool.m */; };
 		4876FC971CBB5EF0002DC521 /* XYTagsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4876FC961CBB5EF0002DC521 /* XYTagsView.m */; };
 		487CC8461CC76FFA006E5100 /* XYBaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 487CC8451CC76FFA006E5100 /* XYBaseTableView.m */; };
@@ -163,6 +163,14 @@
 		4816F16E1CABED9D00E0592C /* XYEventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYEventCell.m; sourceTree = "<group>"; };
 		4816F1701CABEDDF00E0592C /* XYEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYEvent.h; sourceTree = "<group>"; };
 		4816F1711CABEDDF00E0592C /* XYEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYEvent.m; sourceTree = "<group>"; };
+		481A6CDE1CCAA0A20093DBFF /* XYLocalPhotoBrowserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYLocalPhotoBrowserController.h; sourceTree = "<group>"; };
+		481A6CDF1CCAA0A20093DBFF /* XYLocalPhotoBrowserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYLocalPhotoBrowserController.m; sourceTree = "<group>"; };
+		481A6CE01CCAA0A20093DBFF /* XYPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYPhoto.h; sourceTree = "<group>"; };
+		481A6CE11CCAA0A20093DBFF /* XYPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPhoto.m; sourceTree = "<group>"; };
+		481A6CE21CCAA0A20093DBFF /* XYPhotosToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYPhotosToolBar.h; sourceTree = "<group>"; };
+		481A6CE31CCAA0A20093DBFF /* XYPhotosToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPhotosToolBar.m; sourceTree = "<group>"; };
+		481A6CE41CCAA0A20093DBFF /* LXYPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXYPhotoView.h; sourceTree = "<group>"; };
+		481A6CE51CCAA0A20093DBFF /* LXYPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXYPhotoView.m; sourceTree = "<group>"; };
 		481C8D191CBE431F00BA43E8 /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapSearchKit.framework; sourceTree = "<group>"; };
 		481C8D1B1CBE43F200BA43E8 /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MAMapKit.framework; sourceTree = "<group>"; };
 		481C8D1F1CBE446800BA43E8 /* AMapLocationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapLocationKit.framework; sourceTree = "<group>"; };
@@ -232,14 +240,6 @@
 		487350C01CBFD0C10044CB41 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		487350C31CBFF22A0044CB41 /* XYFileTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYFileTool.h; sourceTree = "<group>"; };
 		487350C41CBFF22A0044CB41 /* XYFileTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYFileTool.m; sourceTree = "<group>"; };
-		4876FC821CBB4F4D002DC521 /* XYPhotosBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYPhotosBrowser.h; sourceTree = "<group>"; };
-		4876FC831CBB4F4D002DC521 /* XYPhotosBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPhotosBrowser.m; sourceTree = "<group>"; };
-		4876FC851CBB4F4D002DC521 /* XYPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYPhoto.h; sourceTree = "<group>"; };
-		4876FC861CBB4F4D002DC521 /* XYPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPhoto.m; sourceTree = "<group>"; };
-		4876FC881CBB4F4D002DC521 /* XYBrowserPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYBrowserPhotoView.h; sourceTree = "<group>"; };
-		4876FC891CBB4F4D002DC521 /* XYBrowserPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYBrowserPhotoView.m; sourceTree = "<group>"; };
-		4876FC8A1CBB4F4D002DC521 /* XYPhotosToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYPhotosToolBar.h; sourceTree = "<group>"; };
-		4876FC8B1CBB4F4D002DC521 /* XYPhotosToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPhotosToolBar.m; sourceTree = "<group>"; };
 		4876FC911CBB51BF002DC521 /* XYTagsTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYTagsTool.h; sourceTree = "<group>"; };
 		4876FC921CBB51BF002DC521 /* XYTagsTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYTagsTool.m; sourceTree = "<group>"; };
 		4876FC951CBB5EF0002DC521 /* XYTagsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYTagsView.h; sourceTree = "<group>"; };
@@ -421,8 +421,8 @@
 		4816F11E1CAB96A300E0592C /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				481A6CDD1CCAA0A20093DBFF /* XYLocalPhotoBrowser */,
 				487D72C71CBCF89C00661ABE /* Map */,
-				4876FC801CBB4F4D002DC521 /* PhotoBrowser */,
 				48CEE63C1CAC01CB0099E9B0 /* Tool */,
 				4816F11F1CAB96A300E0592C /* Compose */,
 				4816F1271CAB96A300E0592C /* lib */,
@@ -626,6 +626,21 @@
 			name = TableView;
 			sourceTree = "<group>";
 		};
+		481A6CDD1CCAA0A20093DBFF /* XYLocalPhotoBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				481A6CDE1CCAA0A20093DBFF /* XYLocalPhotoBrowserController.h */,
+				481A6CDF1CCAA0A20093DBFF /* XYLocalPhotoBrowserController.m */,
+				481A6CE01CCAA0A20093DBFF /* XYPhoto.h */,
+				481A6CE11CCAA0A20093DBFF /* XYPhoto.m */,
+				481A6CE21CCAA0A20093DBFF /* XYPhotosToolBar.h */,
+				481A6CE31CCAA0A20093DBFF /* XYPhotosToolBar.m */,
+				481A6CE41CCAA0A20093DBFF /* LXYPhotoView.h */,
+				481A6CE51CCAA0A20093DBFF /* LXYPhotoView.m */,
+			);
+			path = XYLocalPhotoBrowser;
+			sourceTree = "<group>";
+		};
 		481C8D181CBE420D00BA43E8 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
@@ -745,45 +760,6 @@
 				487350C41CBFF22A0044CB41 /* XYFileTool.m */,
 			);
 			path = FileManagerTool;
-			sourceTree = "<group>";
-		};
-		4876FC801CBB4F4D002DC521 /* PhotoBrowser */ = {
-			isa = PBXGroup;
-			children = (
-				4876FC811CBB4F4D002DC521 /* Controller */,
-				4876FC841CBB4F4D002DC521 /* Model */,
-				4876FC871CBB4F4D002DC521 /* View */,
-			);
-			path = PhotoBrowser;
-			sourceTree = "<group>";
-		};
-		4876FC811CBB4F4D002DC521 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				4876FC821CBB4F4D002DC521 /* XYPhotosBrowser.h */,
-				4876FC831CBB4F4D002DC521 /* XYPhotosBrowser.m */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		4876FC841CBB4F4D002DC521 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				4876FC851CBB4F4D002DC521 /* XYPhoto.h */,
-				4876FC861CBB4F4D002DC521 /* XYPhoto.m */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		4876FC871CBB4F4D002DC521 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				4876FC881CBB4F4D002DC521 /* XYBrowserPhotoView.h */,
-				4876FC891CBB4F4D002DC521 /* XYBrowserPhotoView.m */,
-				4876FC8A1CBB4F4D002DC521 /* XYPhotosToolBar.h */,
-				4876FC8B1CBB4F4D002DC521 /* XYPhotosToolBar.m */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		4876FC901CBB4F57002DC521 /* TagTool */ = {
@@ -1111,16 +1087,16 @@
 				48E78CE91CC37DD0003D83E2 /* XYWeatherTool.m in Sources */,
 				481C8D271CBE770B00BA43E8 /* XYAnnotationView.m in Sources */,
 				4816F13F1CAB96A400E0592C /* main.m in Sources */,
-				4876FC8F1CBB4F4D002DC521 /* XYPhotosToolBar.m in Sources */,
 				483961821CB92BC500976D43 /* TZAssetCell.m in Sources */,
 				489E1F0E1CC5D0660096ACE6 /* XYEventsViewController.m in Sources */,
 				481C8D2A1CBE855000BA43E8 /* XYSearchField.m in Sources */,
 				48E78D1A1CC3CBDD003D83E2 /* UIScrollView+MJRefresh.m in Sources */,
 				48CEE6511CAC02220099E9B0 /* FMDatabasePool.m in Sources */,
 				48DCEF511CC519FC002497F6 /* XYTagView.m in Sources */,
-				4876FC8D1CBB4F4D002DC521 /* XYPhoto.m in Sources */,
 				4816F1501CABA3C300E0592C /* UIView+AdjustFrame.m in Sources */,
+				481A6CE61CCAA0A20093DBFF /* XYLocalPhotoBrowserController.m in Sources */,
 				481C8D371CBE96A800BA43E8 /* VOSegmentedControl.m in Sources */,
+				481A6CE71CCAA0A20093DBFF /* XYPhoto.m in Sources */,
 				487350C51CBFF22A0044CB41 /* XYFileTool.m in Sources */,
 				48976DF01CB69D790058024E /* XYPhotosView.m in Sources */,
 				4816F13D1CAB96A400E0592C /* AppDelegate.m in Sources */,
@@ -1137,13 +1113,12 @@
 				481C8D341CBE96A800BA43E8 /* VOContentLayer.m in Sources */,
 				483961891CB92BC500976D43 /* TZVideoPlayerController.m in Sources */,
 				4816F1681CABDF7F00E0592C /* UIBarButtonItem+XY.m in Sources */,
-				4876FC8E1CBB4F4D002DC521 /* XYBrowserPhotoView.m in Sources */,
+				481A6CE91CCAA0A20093DBFF /* LXYPhotoView.m in Sources */,
 				4816F15E1CABC6EA00E0592C /* XYComposeController.m in Sources */,
 				483961921CB960D200976D43 /* XYRecordView.m in Sources */,
 				48DCEF541CC51F58002497F6 /* XYCircleTagsView.m in Sources */,
 				4816F16F1CABED9D00E0592C /* XYEventCell.m in Sources */,
 				485A28901CB57F7F009ED6E3 /* XYEventDetailView.m in Sources */,
-				4876FC8C1CBB4F4D002DC521 /* XYPhotosBrowser.m in Sources */,
 				487350B51CBF92290044CB41 /* XYCellPhotosView.m in Sources */,
 				48ACFCCC1CB6739300BCBD6F /* XYRepeatFrequencyView.m in Sources */,
 				48CEE6411CAC01E00099E9B0 /* XYSqliteTool.m in Sources */,
@@ -1151,6 +1126,7 @@
 				48D7E5211CAD72F50014B7C8 /* UIButton+XY.m in Sources */,
 				4876FC971CBB5EF0002DC521 /* XYTagsView.m in Sources */,
 				48E78D1E1CC4042F003D83E2 /* XYListViewController.m in Sources */,
+				481A6CE81CCAA0A20093DBFF /* XYPhotosToolBar.m in Sources */,
 				487D72CD1CBCF8B200661ABE /* XYMapViewController.m in Sources */,
 				487CC8461CC76FFA006E5100 /* XYBaseTableView.m in Sources */,
 				486704B51CAECF9B00F28679 /* XYCover.m in Sources */,

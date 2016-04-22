@@ -9,7 +9,11 @@
 #import "XYCellPhotosView.h"
 #import "XYPhotoView.h"
 #import "XYPhoto.h"
-#import "XYPhotosBrowser.h"
+#import "XYLocalPhotoBrowserController.h"
+#import "XYFileTool.h"
+
+//#import "XYPhotosBrowser.h"
+
 
 @interface  XYCellPhotosView()
 /**
@@ -54,17 +58,20 @@
     int i = 0;
     for (NSString *photoName in self.photosPath) {
         XYPhoto *photo = [[XYPhoto alloc] init];
-        photo.photoName = photoName;
+//        photo.photoName = photoName;
+        NSString *imagePath = [[XYFileTool sharedFileTool].imagesPath stringByAppendingPathComponent:photoName];
+        photo.image = [UIImage imageWithContentsOfFile:imagePath];
         photo.index = i;
+        photo.srcImageView = tapView;
         [photoArray addObject:photo];
         i ++;
     }
     
     //        弹出图片浏览器
-    XYPhotosBrowser *browser = [[XYPhotosBrowser alloc] init];
-    browser.photos = photoArray;
-    browser.currentPhotoIndex = tapView.tag;
-    [browser show];
+    XYLocalPhotoBrowserController *localBC = [[XYLocalPhotoBrowserController alloc] init];
+    localBC.photos = photoArray;
+    localBC.currentPhotoIndex = tapView.tag;
+    [localBC show];
 
     
 }

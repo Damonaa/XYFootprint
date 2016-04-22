@@ -8,8 +8,7 @@
 
 #import "XYPhotosView.h"
 #import "XYPhotoView.h"
-
-#import "XYPhotosBrowser.h"
+#import "XYLocalPhotoBrowserController.h"
 #import "XYPhoto.h"
 #import "XYFileTool.h"
 
@@ -96,17 +95,22 @@
     int i = 0;
     for (NSString *photoName in self.photoNames) {
         XYPhoto *photo = [[XYPhoto alloc] init];
-        photo.photoName = photoName;
+        
+        NSString *imagePath = [[XYFileTool sharedFileTool].imagesPath stringByAppendingPathComponent:photoName];
+        photo.image = [UIImage imageWithContentsOfFile:imagePath];
+//        photo.photoName = photoName;
         photo.index = i;
+        photo.srcImageView = tapView;
         [photoArray addObject:photo];
         i ++;
     }
     
     //        弹出图片浏览器
-    XYPhotosBrowser *browser = [[XYPhotosBrowser alloc] init];
-    browser.photos = photoArray;
-    browser.currentPhotoIndex = tapView.tag;
-    [browser show];
+    //        弹出图片浏览器
+    XYLocalPhotoBrowserController *localBC = [[XYLocalPhotoBrowserController alloc] init];
+    localBC.photos = photoArray;
+    localBC.currentPhotoIndex = tapView.tag;
+    [localBC show];
 }
 #pragma mark - 长按 删除图片
 - (void)imageLongPress:(UILongPressGestureRecognizer *)gesture{
