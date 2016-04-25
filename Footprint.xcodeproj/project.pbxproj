@@ -36,6 +36,9 @@
 		481C8D351CBE96A800BA43E8 /* VOIndicatorAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 481C8D2F1CBE96A800BA43E8 /* VOIndicatorAnimation.m */; };
 		481C8D361CBE96A800BA43E8 /* VOSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 481C8D311CBE96A800BA43E8 /* VOSegment.m */; };
 		481C8D371CBE96A800BA43E8 /* VOSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 481C8D331CBE96A800BA43E8 /* VOSegmentedControl.m */; };
+		481D4B791CCE8625005DDD84 /* XYRootVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 481D4B781CCE8625005DDD84 /* XYRootVC.m */; };
+		481D4B821CCE8636005DDD84 /* XYFeatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 481D4B7D1CCE8636005DDD84 /* XYFeatureViewController.m */; };
+		481D4B831CCE8636005DDD84 /* XYNewFeatureCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 481D4B811CCE8636005DDD84 /* XYNewFeatureCell.m */; };
 		4823BE4A1CBA56EF00945E05 /* XYWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4823BE491CBA56EF00945E05 /* XYWaveView.m */; };
 		483961721CB92BC500976D43 /* MMVideoPreviewPlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 483961501CB92BC500976D43 /* MMVideoPreviewPlay@2x.png */; };
 		483961731CB92BC500976D43 /* MMVideoPreviewPlayHL@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 483961511CB92BC500976D43 /* MMVideoPreviewPlayHL@2x.png */; };
@@ -187,6 +190,12 @@
 		481C8D311CBE96A800BA43E8 /* VOSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VOSegment.m; sourceTree = "<group>"; };
 		481C8D321CBE96A800BA43E8 /* VOSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VOSegmentedControl.h; sourceTree = "<group>"; };
 		481C8D331CBE96A800BA43E8 /* VOSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VOSegmentedControl.m; sourceTree = "<group>"; };
+		481D4B771CCE8625005DDD84 /* XYRootVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYRootVC.h; sourceTree = "<group>"; };
+		481D4B781CCE8625005DDD84 /* XYRootVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYRootVC.m; sourceTree = "<group>"; };
+		481D4B7C1CCE8636005DDD84 /* XYFeatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYFeatureViewController.h; sourceTree = "<group>"; };
+		481D4B7D1CCE8636005DDD84 /* XYFeatureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYFeatureViewController.m; sourceTree = "<group>"; };
+		481D4B801CCE8636005DDD84 /* XYNewFeatureCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYNewFeatureCell.h; sourceTree = "<group>"; };
+		481D4B811CCE8636005DDD84 /* XYNewFeatureCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYNewFeatureCell.m; sourceTree = "<group>"; };
 		4823BE481CBA56EF00945E05 /* XYWaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYWaveView.h; sourceTree = "<group>"; };
 		4823BE491CBA56EF00945E05 /* XYWaveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYWaveView.m; sourceTree = "<group>"; };
 		483961501CB92BC500976D43 /* MMVideoPreviewPlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MMVideoPreviewPlay@2x.png"; sourceTree = "<group>"; };
@@ -381,6 +390,7 @@
 		4816F0EA1CAB94D300E0592C /* Footprint */ = {
 			isa = PBXGroup;
 			children = (
+				481D4B7A1CCE8636005DDD84 /* NewFeature */,
 				481C8D181CBE420D00BA43E8 /* Framework */,
 				4816F11E1CAB96A300E0592C /* Classes */,
 				4816F0F41CAB94D300E0592C /* Main.storyboard */,
@@ -673,6 +683,41 @@
 			path = VOSegmentedControl;
 			sourceTree = "<group>";
 		};
+		481D4B7A1CCE8636005DDD84 /* NewFeature */ = {
+			isa = PBXGroup;
+			children = (
+				481D4B7B1CCE8636005DDD84 /* Controller */,
+				481D4B7E1CCE8636005DDD84 /* Model */,
+				481D4B7F1CCE8636005DDD84 /* View */,
+			);
+			path = NewFeature;
+			sourceTree = "<group>";
+		};
+		481D4B7B1CCE8636005DDD84 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				481D4B7C1CCE8636005DDD84 /* XYFeatureViewController.h */,
+				481D4B7D1CCE8636005DDD84 /* XYFeatureViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		481D4B7E1CCE8636005DDD84 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		481D4B7F1CCE8636005DDD84 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				481D4B801CCE8636005DDD84 /* XYNewFeatureCell.h */,
+				481D4B811CCE8636005DDD84 /* XYNewFeatureCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		4839614E1CB92BC500976D43 /* TZImagePickerController */ = {
 			isa = PBXGroup;
 			children = (
@@ -841,6 +886,8 @@
 		48CEE63D1CAC01CB0099E9B0 /* RootVCTool */ = {
 			isa = PBXGroup;
 			children = (
+				481D4B771CCE8625005DDD84 /* XYRootVC.h */,
+				481D4B781CCE8625005DDD84 /* XYRootVC.m */,
 			);
 			path = RootVCTool;
 			sourceTree = "<group>";
@@ -1076,9 +1123,11 @@
 				487350C11CBFD0C10044CB41 /* JSONKit.m in Sources */,
 				48E78D181CC3CBDD003D83E2 /* MJRefreshHeaderView.m in Sources */,
 				48C4280D1CB435020000DAC9 /* XYClockView.m in Sources */,
+				481D4B831CCE8636005DDD84 /* XYNewFeatureCell.m in Sources */,
 				483961841CB92BC500976D43 /* TZImageManager.m in Sources */,
 				48A408831CC1233E003BF8B2 /* XYMoveButton.m in Sources */,
 				483961871CB92BC500976D43 /* TZPhotoPreviewCell.m in Sources */,
+				481D4B821CCE8636005DDD84 /* XYFeatureViewController.m in Sources */,
 				48ACFCCF1CB6747700BCBD6F /* UIImage+Category.m in Sources */,
 				48E78D1B1CC3CBDD003D83E2 /* UIView+MJExtension.m in Sources */,
 				48E78D271CC4115B003D83E2 /* XYSingleTag.m in Sources */,
@@ -1105,6 +1154,7 @@
 				483961831CB92BC500976D43 /* TZAssetModel.m in Sources */,
 				4816F1421CAB972600E0592C /* XYMainViewController.m in Sources */,
 				48E78D191CC3CBDD003D83E2 /* UIScrollView+MJExtension.m in Sources */,
+				481D4B791CCE8625005DDD84 /* XYRootVC.m in Sources */,
 				4816F1611CABD04B00E0592C /* XYEventTextView.m in Sources */,
 				48976E0F1CB6A7FC0058024E /* NSString+XY.m in Sources */,
 				4823BE4A1CBA56EF00945E05 /* XYWaveView.m in Sources */,

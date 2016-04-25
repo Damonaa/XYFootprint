@@ -197,7 +197,7 @@
                     //刷新表格
                     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
                     
-                    [self.eventsTableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationMiddle];
+                    [self.eventsTableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
                     //子线程中更新数据，天气写入数据库
                     NSString *sql = [NSString stringWithFormat:@"update t_event set weather = '%@' where notiKey = '%@'",resualtWeather, event.notiKey];
                     BOOL flag = [XYSqliteTool executeUpdate:sql];
@@ -343,7 +343,7 @@
 
 
 - (void)eventCell:(XYEventCell *)eventCell slideToRightDoneWithIndex:(NSInteger)index{
-    XYLog(@"%ld 完成", index);
+//    XYLog(@"%ld 完成"(long), index);
     //取出事件
     XYEvent *event = [self.eventFramesArray[index] event];
     event.completeEvent = YES;
@@ -364,7 +364,7 @@
 }
 
 - (void)eventCell:(XYEventCell *)eventCell slideToLeftDeleteWithIndex:(NSInteger)index{
-    XYLog(@"%ld 删除", index);
+//    XYLog(@"%ld 删除"(long), index);
 
     //更新数据库 子线程
     XYEvent *event = [self.eventFramesArray[index] event];

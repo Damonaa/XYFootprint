@@ -285,7 +285,7 @@
     if (_event.text != nil && ![_event.text isEqualToString:@"(null)"]) {
         localNoti.alertBody = self.event.text;
     }else if (_event.images.count > 0){
-        localNoti.alertBody = [NSString stringWithFormat:@"有%ld张图片", _event.images.count];
+        localNoti.alertBody = [NSString stringWithFormat:@"有%ld张图片", (unsigned long)_event.images.count];
     }else if (_event.audioDuration > 0.0){
         localNoti.alertBody = @"有录音";
     }

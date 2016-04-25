@@ -81,7 +81,7 @@
     
     if (_singleTag.tagEvents.count > 0) {//如果有事件，上下分别展示名称，个数
         self.eventsCount.hidden = NO;
-        self.eventsCount.text = [NSString stringWithFormat:@"%ld", _singleTag.tagEvents.count];
+        self.eventsCount.text = [NSString stringWithFormat:@"%ld", (unsigned long)_singleTag.tagEvents.count];
         [self.eventsCount sizeToFit];
         
         self.tagTitle.y = self.height / 2 - self.tagTitle.height / 2 - 5;

@@ -13,6 +13,7 @@
 #import <AMapLocationKit/AMapLocationKit.h>
 #import <AMapSearchKit/AMapSearchKit.h>
 #import <AVFoundation/AVFoundation.h>
+#import "XYRootVC.h"
 
 @interface AppDelegate ()
 
@@ -34,11 +35,14 @@
    
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     [self configureAPIKey];
-    //设置根控制器
-    XYMainViewController *mainVc = [[XYMainViewController alloc] init];
-    XYMainNavigationController *mainNav = [[XYMainNavigationController alloc] initWithRootViewController:mainVc];
     
-    self.window.rootViewController = mainNav;
+    //设置根视图
+    [XYRootVC setRootVCWithWindow:_window];
+    //设置根控制器
+//    XYMainViewController *mainVc = [[XYMainViewController alloc] init];
+//    XYMainNavigationController *mainNav = [[XYMainNavigationController alloc] initWithRootViewController:mainVc];
+//    
+//    self.window.rootViewController = mainNav;
     
     [self.window makeKeyAndVisible];
     
