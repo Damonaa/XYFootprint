@@ -255,4 +255,45 @@
     NSDateComponents *coms = [calendar components:NSCalendarUnitDay fromDate:nowDate toDate:selfDate options:0];
     return coms.day;
 }
+
+/**
+ *  下一次提醒的时间
+ *
+ *  @param fireDate 当前的时间
+ *  @param interval 时间间隔
+ *
+ *  @return 下一次提醒的时间的字符串
+ */
++ (NSString *)nextRepeatDaySinceDate:(NSDate *)fireDate interval:(NSTimeInterval)interval{
+    NSDate *nextFireDate = [NSDate dateWithTimeInterval:interval sinceDate:fireDate];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm";
+    dateFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"zn_US"];
+    NSString *nextFireStr = [NSDate dateTransformFromDate:nextFireDate format:@"yyyy-MM-dd HH:mm" ];
+    
+    return [NSString stringWithFormat:@"%@", nextFireStr];
+}
+
+//计算周一到周五的提醒
++ (NSString *)nextRepeatMonToFirSinceDate:(NSDate *)fireDate{
+    NSDate *nextFireDate = [NSDate dateWithTimeInterval:24 * 60 * 60 sinceDate:fireDate];
+    
+    NSInteger indexDay = [NSDate acquireWeekDayFromDate:nextFireDate];
+    //周日 == 1， 周六 == 7
+    NSString *nextFireStr;
+    if (indexDay == 1) {
+        nextFireDate = [NSDate dateWithTimeInterval:24 * 60 * 60 sinceDate:nextFireDate];
+        nextFireStr = [NSDate dateTransformFromDate:nextFireDate format:@"yyyy-MM-dd HH:mm" ];
+        return [NSString stringWithFormat:@"%@", nextFireStr];
+    }else if (indexDay == 7){
+        nextFireDate = [NSDate dateWithTimeInterval:24 * 60 * 60 * 2 sinceDate:nextFireDate];
+        nextFireStr = [NSDate dateTransformFromDate:nextFireDate format:@"yyyy-MM-dd HH:mm" ];
+        return [NSString stringWithFormat:@"%@", nextFireStr];
+    }else{
+        nextFireStr = [NSDate dateTransformFromDate:nextFireDate format:@"yyyy-MM-dd HH:mm" ];
+    }
+    
+    
+    return [NSString stringWithFormat:@"%@", nextFireStr];
+}
 @end

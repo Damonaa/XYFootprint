@@ -212,8 +212,9 @@
     
     UILabel *weatherLabel = [[UILabel alloc] init];
     [self.contentView addSubview:weatherLabel];
+//    weatherLabel.backgroundColor = [UIColor blueColor];
     self.weatherLabel = weatherLabel;
-    weatherLabel.font = [UIFont systemFontOfSize:10];
+    weatherLabel.font = [UIFont systemFontOfSize:12];
     
     //在cell的左右各放两个imageView，左边完成，右边删除
     UIImageView *doneIV = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ok_normal"]];
@@ -319,10 +320,10 @@
                 self.nextRepeatLable.text = [self nextRepeatWeekSinceDate:fireDate];
                 break;
             case RepeatFrequenceMonth:
-                self.nextRepeatLable.text = [self nextRepeatMonthSinceDate:event.remindDate];
+                self.nextRepeatLable.text = [self nextRepeatMonthSinceDate:fireDate];
                 break;
             case RepeatFrequenceYear:
-                self.nextRepeatLable.text = [self nextRepeatYearSinceDate:event.remindDate];
+                self.nextRepeatLable.text = [self nextRepeatYearSinceDate:fireDate];
                 break;
             default:
                 break;
@@ -348,68 +349,45 @@
 
 #pragma mark - 计算转换时间样式
 //计算每年的提醒
-- (NSString *)nextRepeatYearSinceDate:(NSString *)remindDate{
+- (NSString *)nextRepeatYearSinceDate:(NSDate *)fireDate{
     
-    NSRange range = [remindDate rangeOfString:@"-"];
-    NSString *dateStr = [remindDate substringFromIndex:range.length + range.location];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSRange range = [calendar rangeOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitYear forDate:fireDate];
+    NSString *nextDateStr = [NSDate nextRepeatDaySinceDate:fireDate interval:24 * 60 * 60 * range.length];
     
-    return [NSString stringWithFormat:@"每年的 %@ 提醒", dateStr];
+    return [NSString stringWithFormat:@"下次将与 %@ 提醒", nextDateStr];
 }
 //计算每月的提醒
-- (NSString *)nextRepeatMonthSinceDate:(NSString *)remindDate{
-    NSRange range = [remindDate rangeOfString:@"-"];
-    NSString *dateStr = [remindDate substringFromIndex:range.length + range.location];
-    range = [remindDate rangeOfString:@"-"];
-    dateStr = [remindDate substringFromIndex:range.length + range.location];
+- (NSString *)nextRepeatMonthSinceDate:(NSDate *)fireDate{
     
-    return [NSString stringWithFormat:@"每月的 %@ 提醒", dateStr];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSRange range = [calendar rangeOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitMonth forDate:fireDate];
+    NSString *nextDateStr = [NSDate nextRepeatDaySinceDate:fireDate interval:24 * 60 * 60 * range.length];
+    
+    return [NSString stringWithFormat:@"下次将与 %@ 提醒", nextDateStr];
 }
 //计算每周的提醒
 - (NSString *)nextRepeatWeekSinceDate:(NSDate *)fireDate{
-    NSDate *nextFireDate = [NSDate dateWithTimeInterval:24 * 60 * 60 * 6 sinceDate:fireDate];
-    return [self nextRepeatDaySinceDate:nextFireDate];
+    NSString *nextDateStr = [NSDate nextRepeatDaySinceDate:fireDate interval:24 * 60 * 60 * 7];
+    return [NSString stringWithFormat:@"下次将与 %@ 提醒", nextDateStr];
 }
 
 //计算周一到周五的提醒
 - (NSString *)nextRepeatMonToFirSinceDate:(NSDate *)fireDate{
-    NSDate *nextFireDate = [NSDate dateWithTimeInterval:24 * 60 * 60 sinceDate:fireDate];
-    
-    NSInteger indexDay = [NSDate acquireWeekDayFromDate:nextFireDate];
-    //周日 == 1， 周六 == 7
-    NSString *nextFireStr;
-    if (indexDay == 1) {
-        nextFireDate = [NSDate dateWithTimeInterval:24 * 60 * 60 sinceDate:nextFireDate];
-        nextFireStr = [NSDate dateTransformFromDate:nextFireDate format:@"yyyy-MM-dd HH:mm" ];
-        return [NSString stringWithFormat:@"下次将与 %@ 提醒", nextFireStr];
-    }else if (indexDay == 7){
-        nextFireDate = [NSDate dateWithTimeInterval:24 * 60 * 60 * 2 sinceDate:nextFireDate];
-        nextFireStr = [NSDate dateTransformFromDate:nextFireDate format:@"yyyy-MM-dd HH:mm" ];
-        return [NSString stringWithFormat:@"下次将与 %@ 提醒", nextFireStr];
-    }else{
-        nextFireStr = [NSDate dateTransformFromDate:nextFireDate format:@"yyyy-MM-dd HH:mm" ];
-    }
-    
-    
-    return [NSString stringWithFormat:@"下次将与 %@ 提醒", nextFireStr];
+    NSString *nextDateStr = [NSDate nextRepeatMonToFirSinceDate:fireDate];
+    return [NSString stringWithFormat:@"下次将与 %@ 提醒", nextDateStr];
 }
 
 //计算下一天的提醒
 - (NSString *)nextRepeatDaySinceDate:(NSDate *)fireDate{
-    NSDate *nextFireDate = [NSDate dateWithTimeInterval:24 * 60 * 60 sinceDate:fireDate];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm";
-    dateFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"zn_US"];
-    NSString *nextFireStr = [NSDate dateTransformFromDate:nextFireDate format:@"yyyy-MM-dd HH:mm" ];
-    
-    return [NSString stringWithFormat:@"下次将与 %@ 提醒", nextFireStr];
+    NSString *nextDateStr = [NSDate nextRepeatDaySinceDate:fireDate interval:24 * 60 * 60];
+    return [NSString stringWithFormat:@"下次将与 %@ 提醒", nextDateStr];
 }
 
 //转换时间日期样式
 - (NSString *)transformRemindDateWithDateStr:(NSString *)remindDate{
     NSDate *date = [NSDate dateTransformFromStr:remindDate format:@"yyyy-MM-dd HH:mm"];
-    
-    
-    
+
     //截取 时:分
     NSRange hourRange = [remindDate rangeOfString:@" "];
     NSString *hourStr = [remindDate substringFromIndex:hourRange.length + hourRange.location];

@@ -22,6 +22,8 @@
 #import "XYTagsTool.h"
 #import "XYTagsView.h"
 #import "XYMapViewController.h"
+#import "XYMainViewController.h"
+#import "XYMainNavigationController.h"
 
 @interface XYComposeController ()<UITextViewDelegate, XYCoverDelegate, XYEventDetailViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, TZImagePickerControllerDelegate, XYRecordViewDelegate, AVAudioRecorderDelegate, XYTagsViewDelegate>
 
@@ -130,8 +132,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-
-    self.title = self.isModifyEvent ? @"修改事件" : @"新计划";
+    //设置标题
+    if (self.isShowEvent) {
+        self.title = @"你的提醒";
+    }else{
+        self.title = self.isModifyEvent ? @"修改事件" : @"新计划";
+    }
     
     if (self.isModifyEvent) {
         self.originalNotiKey = _event.notiKey;
@@ -151,6 +157,14 @@
 
 #pragma mark - 点击取消，返回上一控制器
 - (void)leftBtnClick{
+    
+    if (self.isShowEvent) {//从提醒入口进去此控制器,返回主界面
+        XYMainViewController *mainVC = [[XYMainViewController alloc] init];
+        XYMainNavigationController *mainNav = [[XYMainNavigationController alloc] initWithRootViewController:mainVC];
+        XYKeyWindow.rootViewController = mainNav;
+        return;
+    }
+    
     [self.navigationController popViewControllerAnimated:YES];
 
     if (self.isModifyEvent) {//如果是修改，则点击取消不做任何处理
@@ -171,10 +185,20 @@
 
 #pragma mark - 保存事件到数据库
 - (void)rightBtnClick{
-    //创建本地通知
-
-    [self setupLocalNotification];
     
+    if (self.isShowEvent) {//从提醒入口进去此控制器,返回主界面
+        XYMainViewController *mainVC = [[XYMainViewController alloc] init];
+        XYMainNavigationController *mainNav = [[XYMainNavigationController alloc] initWithRootViewController:mainVC];
+        XYKeyWindow.rootViewController = mainNav;
+        return;
+    }
+    
+    //创建本地通知
+    BOOL flag = [self setupLocalNotification];
+    
+    if (!flag) {//如果创建失败
+        return;
+    }
     if (self.isModifyEvent) {//修改原事件
         [self modifyOriginalLocalNoti];
     }else{//创建新事件
@@ -206,7 +230,7 @@
     NSString *sqlStr = [NSString stringWithFormat:@"insert into t_event (text, remindDate, remindLoc, region, frequency, images, audioName, audioDuration, notiKey, tag, complete) values ('%@', '%@', '%@', '%@', %u, '%@', '%@', %f, '%@', '%@', %d)", _event.text, _event.remindDate, _event.remindLoc, regionD, _event.frequency, strImages, _event.audioName, _event.audioDuration, _event.notiKey, _event.tag, _event.completeEvent];
     BOOL flag =  [XYSqliteTool executeUpdate:sqlStr];
     if (flag) {
-        XYLog(@"新事件保存到数据库成功");
+//        XYLog(@"新事件保存到数据库成功");
     }
 }
 
@@ -235,7 +259,7 @@
     NSData *regionD = [NSKeyedArchiver archivedDataWithRootObject:_event.region];
     //更新数据库
     NSString *sql = [NSString stringWithFormat:@"update t_event set text = '%@', remindDate = '%@', remindLoc = '%@', region = '%@', frequency = %u, images = '%@', audioName = '%@', audioDuration = %f, notiKey = '%@', tag = '%@', complete = %d where notiKey = '%@'",  _event.text, _event.remindDate, _event.remindLoc, regionD, _event.frequency, strImages, _event.audioName, _event.audioDuration, _event.notiKey, _event.tag, _event.completeEvent, _originalNotiKey];
-    XYLog(@"%@", sql);
+//    XYLog(@"%@", sql);
     BOOL flag = [XYSqliteTool executeUpdate:sql];
     if (flag) {
         XYLog(@"修改事件保存到数据库成功");
@@ -243,12 +267,12 @@
 
 }
 #pragma mark - 创建本地通知
-- (void)setupLocalNotification{//77.63
+- (BOOL)setupLocalNotification{
     
     //时间和地点至少设置一个
     if (_event.remindDate == nil && _event.remindLoc == nil) {
         [self showAttentionAlertWithText:@"你要告诉我个时间或者地址,不然我提醒个鬼啊！！"];
-        return;
+        return NO;
     }
     //文字，声音，图片三者必须有起义
     BOOL hasText;
@@ -261,7 +285,7 @@
     if (!hasText && _event.images.count == 0 && _event.audioDuration == 0.0) {
         
         [self showAttentionAlertWithText:@"什么都不写，你要提醒的是什么事啊！"];
-        return;
+        return NO;
     }
 
     
@@ -321,6 +345,8 @@
             break;
     }
     
+    localNoti.applicationIconBadgeNumber = 1;
+    
     localNoti.alertLaunchImage = @"launchImage";
     localNoti.soundName = UILocalNotificationDefaultSoundName;
     //以提醒时间作为Key，用于取消推送通知
@@ -328,6 +354,8 @@
     self.event.notiKey = [NSDate currentDateStr];
     localNoti.userInfo = @{@"key": self.event.notiKey};
     [[UIApplication sharedApplication] scheduleLocalNotification:localNoti];
+    
+    return YES;
 }
 
 #pragma mark - 添加子控件
@@ -348,7 +376,12 @@
         self.eventTextView.text = _event.text;
         self.eventTextView.hidenPlaceHolder = YES;
     }
-
+    
+    //如若even有text 则赋值
+    if (_event.text.length > 0 && ![_event.text isEqualToString:@"(null)"]) {
+        self.eventTextView.text = _event.text;
+        self.eventTextView.hidenPlaceHolder = YES;
+    }
     
 
     CGFloat margin = 20;

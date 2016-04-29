@@ -76,10 +76,6 @@
     
    //添加add按钮
     [self setupAddBtn];
-    
-    //加载数据
-    [self loadData];
-    
     //监听天气通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshWeatherInfo:) name:@"getWeatherInfo" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshgWeatherFailure:) name:@"getWeatherFailure" object:nil];
@@ -94,13 +90,13 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadData) name:@"deleteTagGroup" object:nil];
     
     
+
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
-//    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-//    [self.eventsTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    //加载数据
+    [self loadData];
     
     [self.eventsTableView reloadData];
     

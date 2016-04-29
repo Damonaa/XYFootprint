@@ -71,6 +71,8 @@
         CGSize picturesSzie = [self photosSizeWithCount:_event.images.count];
         CGFloat picturesX = CGRectGetMaxX(_remindFrame) + margin;
         self.picturesFrame = (CGRect){{picturesX, picturesY}, picturesSzie};
+        //2，如果有图片
+        self.rowHeight = CGRectGetMaxY(_picturesFrame) + margin;
         //音频按钮的frame的Y
         audioY = CGRectGetMaxY(_picturesFrame) + margin;
         //下一次提醒frame的Y
@@ -80,15 +82,14 @@
         //天气标签的Y
         weatherY = remindLocY;
         
-        //2，如果有图片
-        self.rowHeight = CGRectGetMaxY(_picturesFrame) + margin;
-        
     }
     
     //音频frame
     if (_event.audioDuration != 0) {
         CGFloat audioX = CGRectGetMaxX(_remindFrame) + margin;
         self.audioFrame = CGRectMake(audioX, audioY, 100, 40);
+        //3，如果有音频
+        self.rowHeight = CGRectGetMaxY(_audioFrame) + margin;
         //下一次提醒frame的Y
         nextRepeatY = CGRectGetMaxY(_audioFrame) + margin;
         //提醒地点frame的Y
@@ -96,20 +97,20 @@
         //天气标签的Y
         weatherY = remindLocY;
         
-        //3，如果有音频
-        self.rowHeight = CGRectGetMaxY(_audioFrame) + margin;
+        
         
     }
     //下一次的重复提醒时间
     if (_event.frequency != 0) {
         CGFloat nextRepeatX = CGRectGetMaxX(_remindFrame) + margin;
-        self.nextRepeatFrame = CGRectMake(nextRepeatX, nextRepeatY, XYScreenWidth - remindWH - 20, 40);
+        self.nextRepeatFrame = CGRectMake(nextRepeatX, nextRepeatY, XYScreenWidth - remindWH - 20, 25);
+        //4，如果有重复
+        self.rowHeight = CGRectGetMaxY(_nextRepeatFrame) + margin;
         //提醒地点frame的Y
         remindLocY = CGRectGetMaxY(_nextRepeatFrame) + margin;
         //天气标签的Y
         weatherY = remindLocY;
-        //4，如果有重复
-        self.rowHeight = CGRectGetMaxY(_nextRepeatFrame) + margin;
+        
     }
     
     //提醒地点，并且有设置时间
@@ -117,16 +118,17 @@
     if (![_event.remindLoc isEqualToString:@"(null)"] && _event.remindDate.length > 6) {
         CGFloat remindLocX = CGRectGetMaxX(_remindFrame) + margin;
         self.addressFrame = CGRectMake(remindLocX, remindLocY, XYScreenWidth - remindWH - 20, 40);
-        //天气标签的Y
-        weatherY = CGRectGetMaxY(_addressFrame) + margin;
         //5，如果有提醒地址
         self.rowHeight = CGRectGetMaxY(_addressFrame) + margin;
+        //天气标签的Y
+        weatherY = CGRectGetMaxY(_addressFrame) + margin;
+        
     }
     
     //天气 在最底部
     if (_event.isHasWeather) {
         CGFloat weatherX = CGRectGetMaxX(_remindFrame) + margin;
-        self.weatherFrame = CGRectMake(weatherX, weatherY, remindWH, 35);
+        self.weatherFrame = CGRectMake(weatherX, weatherY, remindWH, 20);
         //6，如果有提醒地址
         self.rowHeight = CGRectGetMaxY(_weatherFrame);
     }

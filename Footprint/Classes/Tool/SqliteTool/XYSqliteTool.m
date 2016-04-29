@@ -65,7 +65,7 @@ static FMDatabase *_eventsDB;
     }else{
         XYLog(@"execute failure");
     }
-    XYLog(@"%@",[NSThread currentThread]);
+//    XYLog(@"%@",[NSThread currentThread]);
     
     return flag;
 }
@@ -107,7 +107,7 @@ static FMDatabase *_eventsDB;
  *  @return 数组
  */
 + (NSArray *)executeQuarySqecifyRequire:(NSString *)require{
-    XYLog(@"%@",[NSThread currentThread]);
+//    XYLog(@"%@",[NSThread currentThread]);
     FMResultSet *result ;
     if (require.length > 0) {//如果有筛选条件，则筛选
         NSString *query = [NSString stringWithFormat:@"select * from t_event where text like '%%%@%%' order by complete asc",require];
@@ -156,6 +156,18 @@ static FMDatabase *_eventsDB;
     return  [self quaryResultWith:result];
 }
 
+
+/**
+ *  查询指定的notikey
+ *
+ *  @return 指定的notikey的数组
+ */
++ (NSArray *)executeTagQuaryWithNotiKey:(NSString *)notiKey{
+    //    XYLog(@"%@",[NSThread currentThread]);
+    FMResultSet *result = [_eventsDB executeQuery:@"select * from t_event where notiKey = ?;",notiKey];
+    
+    return  [self quaryResultWith:result];
+}
 
 //查询结果写入数组
 + (NSArray *)quaryResultWith:(FMResultSet *)result{

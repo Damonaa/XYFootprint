@@ -10,7 +10,6 @@
 
 @interface XYMainViewController : UIViewController
 
-
 //加载数据
 - (void)loadData;
 @end

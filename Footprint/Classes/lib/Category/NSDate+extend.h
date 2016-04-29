@@ -95,4 +95,23 @@
  *  @return 某一天距离今天相差的天数
  */
 - (NSInteger)daysDifferentsToToday;
+
+/**
+ *  下一次提醒的时间
+ *
+ *  @param fireDate 当前的时间
+ *  @param interval 时间间隔
+ *
+ *  @return 下一次提醒的时间的字符串
+ */
++ (NSString *)nextRepeatDaySinceDate:(NSDate *)fireDate interval:(NSTimeInterval)interval;
+
+/**
+ *  计算周一到周五的提醒
+ *
+ *  @param fireDate 当前的时间
+ *
+ *  @return 字符串
+ */
++ (NSString *)nextRepeatMonToFirSinceDate:(NSDate *)fireDate;
 @end

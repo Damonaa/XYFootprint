@@ -55,4 +55,11 @@
  *  @return 数组
  */
 + (NSArray *)executeQuarySqecifyRequire:(NSString *)require;
+
+/**
+ *  查询指定的notikey
+ *
+ *  @return 指定的notikey的数组
+ */
++ (NSArray *)executeTagQuaryWithNotiKey:(NSString *)notiKey;
 @end

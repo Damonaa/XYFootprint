@@ -149,7 +149,7 @@
     dateView.complete = ^(NSString *dateStr){
         XYLog(@"%@", dateStr);
         weakSelf.dateStr = dateStr;
-        NSString *titleStr = [NSString stringWithFormat:@"%@ %ld:%ld",weakSelf.dateStr, (long)weakSelf.hour, (long)weakSelf.minute];
+        NSString *titleStr = [NSString stringWithFormat:@"%@ %02ld:%02ld",weakSelf.dateStr, (long)weakSelf.hour, (long)weakSelf.minute];
         
         titleLabel.text = titleStr;
     };
@@ -163,14 +163,14 @@
     
     clockView.hourChange = ^(NSInteger hourInt){
         weakSelf.hour = hourInt;
-        NSString *titleStr = [NSString stringWithFormat:@"%@ %ld:%ld",weakSelf.dateStr, (long)weakSelf.hour, (long)weakSelf.minute];
+        NSString *titleStr = [NSString stringWithFormat:@"%@ %02ld:%02ld",weakSelf.dateStr, (long)weakSelf.hour, (long)weakSelf.minute];
         
         titleLabel.text = titleStr; 
     };
     
     clockView.minuteChange = ^(NSInteger minuteInt){
         weakSelf.minute = minuteInt;
-        NSString *titleStr = [NSString stringWithFormat:@"%@ %ld:%ld",weakSelf.dateStr, (long)weakSelf.hour, (long)weakSelf.minute];
+        NSString *titleStr = [NSString stringWithFormat:@"%@ %02ld:%02ld",weakSelf.dateStr, (long)weakSelf.hour, (long)weakSelf.minute];
         
         titleLabel.text = titleStr;
     };

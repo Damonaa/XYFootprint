@@ -20,6 +20,11 @@
  *  修改事件，默认是NO，若是从MainVC跳转进去的则修改 YES
  */
 @property (nonatomic, assign, getter=isModifyEvent) BOOL modifyEvent;
+/**
+ *  通过提醒打开，进去此控制器
+ */
+@property (nonatomic, assign, getter=isShowEvent) BOOL showEvent;
+
 
 
 @end
